@@ -16,10 +16,10 @@
   </head>
   <body>
     <div class="container">
-      <h1>Введите номер</h1>
+      <h1>Enter the number</h1>
       <input type="text" id="myTextField" />
       <button type="submit" onclick="goToChat()" id="myBtn">
-        Перейти в чат
+        Go to chat
       </button>
     </div>
     <script>
@@ -56,6 +56,10 @@
 
           console.log(localValue);
           console.log("opened");
+          
+          document.getElementById("myTextField").value = "";
+          document.getElementById("myTextField").focus();
+          
         }
         document.getElementById("myTextField").value = "error";
       }

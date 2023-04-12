@@ -45,6 +45,11 @@
           localValue = localValue.replace(/\(/g, "");
           localValue = localValue.replace(/\)/g, "");
           localValue = localValue.replace(/\-/g, "");
+          localValue = localValue.replace(/\+/g, "");
+          
+          if (localValue.length != 10) {
+          localValue = localValue.substring(1);
+          }
 
           window.open(`https://wa.me/${localValue}`);
 

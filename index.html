@@ -39,7 +39,7 @@
 
       function goToChat() {
         var value = document.getElementById("myTextField").value;
-        if (value != "" && value != "error") {
+        if (value != "") {
           let localValue = value;
           
           localValue = localValue.replace(/\s/g, "");
@@ -61,7 +61,6 @@
           document.getElementById("myTextField").focus();
           
         }
-        document.getElementById("myTextField").value = "error";
       }
     </script>
   </body>

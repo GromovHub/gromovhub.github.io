@@ -12,55 +12,76 @@
       .container {
         text-align: center;
       }
+      .bottom-text {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        color: rgb(205, 205, 205);
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <h1>Enter the number</h1>
       <input type="text" id="myTextField" />
-      <button type="submit" onclick="goToChat()" id="myBtn">
-        Go to chat
+      <button type="submit" onclick="goToChat(0)" id="myBtnGreen">
+        Go to chat 🦖
       </button>
-      <p>by Gromov with ❤️<p/>
+      <button type="submit" onclick="goToChat(1)" id="myBtnBlue">
+        Go to chat 🦕
+      </button>
+      <p>by Gromov with ❤️</p>
+      <div class="bottom-text">
+        <p>
+          This fantastic program removes spaces and brackets from the copied
+          number and then opens "green" or "blue" chat<br />
+          You can also use shortcuts "Enter" and "Ctrl+Enter"<br />
+        </p>
+        <p>© 2023</p>
+      </div>
     </div>
     <script>
       document.getElementById("myTextField").focus();
       var input = document.getElementById("myTextField");
 
-      // Execute a function when the user presses a key on the keyboard
       input.addEventListener("keypress", function (event) {
-        // If the user presses the "Enter" key on the keyboard
-        if (event.key === "Enter") {
-          // Cancel the default action, if needed
+        console.log(event);
+        if (event.key === "Enter" && event.ctrlKey == false) {
           event.preventDefault();
-          // Trigger the button element with a click
-          document.getElementById("myBtn").click();
+          document.getElementById("myBtnGreen").click();
+        } else if (event.key === "Enter" && event.ctrlKey == true) {
+          event.preventDefault();
+          document.getElementById("myBtnBlue").click();
         }
       });
 
-      function goToChat() {
+      function goToChat(select) {
         var value = document.getElementById("myTextField").value;
         if (value != "") {
           let localValue = value;
-          
+
           localValue = localValue.replace(/\s/g, "");
           localValue = localValue.replace(/\(/g, "");
           localValue = localValue.replace(/\)/g, "");
           localValue = localValue.replace(/\-/g, "");
           localValue = localValue.replace(/\+/g, "");
-          
-          if (localValue[0] == "8") {
-          localValue = localValue.replace(/8/, "7");
-          }
 
-          window.open(`https://wa.me/${localValue}`);
+          if (localValue[0] == "8") {
+            localValue = localValue.replace(/8/, "7");
+          }
 
           console.log(localValue);
           console.log("opened");
-          
+
           document.getElementById("myTextField").value = "";
           document.getElementById("myTextField").focus();
-          
+
+          if (select == 0) {
+            window.open(`https://wa.me/${localValue}`);
+          } else if (select == 1) {
+            localValue = "+" + localValue;
+            window.open(`https://t.me/${localValue}`);
+          }
         }
       }
     </script>

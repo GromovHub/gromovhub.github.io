@@ -81,6 +81,9 @@
           if (select == 0) {
             window.open(`https://wa.me/${localValue}`);
           } else if (select == 1) {
+            if (localValue.length == 10) {
+              localValue = "7" + localValue;
+            }
             localValue = "+" + localValue;
             window.open(`https://t.me/${localValue}`);
           }

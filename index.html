@@ -51,7 +51,7 @@
         if (event.key === "Enter" && event.ctrlKey == false) {
           event.preventDefault();
           document.getElementById("myBtnGreen").click();
-        } else if (event.key === "Enter" && event.ctrlKey == true) {
+        } else if (event.key === "Enter" || event.key === "\n" && event.ctrlKey == true) {
           event.preventDefault();
           document.getElementById("myBtnBlue").click();
         }

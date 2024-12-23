@@ -1,5 +1,33 @@
-<script src="https://pruffme.com/api/library.js"
-data-name="pruffmeapi"
-data-type="webinar"
-data-hash="835639b6fd0f5b5be2e72bfd35cb2f46">
+<head>
+<script src="https://pruffme.com/api/library.js" data-name="pruffmeapi" data-type="webinar"></script>
+<script>
+function pruffmeAPICallback(callback)
+
+pruffmeapi.setWebinarHash("835639b6fd0f5b5be2e72bfd35cb2f46");//[Обязательно] Hash вебинара
+pruffmeapi.setWebinarContainerName(".pruffme-container");  // Указание контейнера, где будет отрисована комната. Если не указано то на всю страницу
+pruffmeapi.setParticipantName("Participant Name"); //Заранее заданное имя участника вебинара
+
+pruffmeapi.setExitCallback(function(){
+alert("exit"); // Действие при нажатии кнопки "Выход"
+);
+
+pruffmeapi.setParticipantCallback(function(participant)
+console.log(participant); // Вывод информации о залогиненом участнике вебинара
+);
+callback();//[Обязательно] Для продолжения инициализации
+}
 </script>
+
+<style>
+.pruffme-container
+
+width:100%;
+height: 100%;
+position: relative;
+overflow: hidden;
+
+</style>
+</head>
+<body>
+<div class="pruffme-container"></div>
+</body>
